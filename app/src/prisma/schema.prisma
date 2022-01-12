@@ -1,0 +1,29 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["fullTextSearch"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        BigInt  @id @default(autoincrement())
+  uuid      String  @unique @default(uuid())
+  firstName String
+  lastName  String
+  email     String  @unique
+  state     String
+  petExp    PetExp  @default(Y)
+
+  @@map("tbl_users")
+}
+
+enum PetExp {
+  Y
+  N
+}

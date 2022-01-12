@@ -1,0 +1,24 @@
+type Query {
+  users(
+    state: String,
+    petExp: PetExp,
+    name: String,
+    email: String,
+    limit: Int,
+    offset: Int
+  ): [User]
+}
+
+enum PetExp {
+  Y,
+  N
+}
+
+type User {
+  uuid: String
+  firstName: String
+  lastName: String
+  email: String
+  state: String
+  petExp: PetExp
+}
