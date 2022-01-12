@@ -32,3 +32,18 @@ services:
       - 'rightpaw-postgres'
     links:
       - 'rightpaw-postgres'
+
+  rightpaw-web:
+    build:
+      context: ${WEB_DIR}
+      dockerfile: Dockerfile.local
+    container_name: ${WEB_NAME}
+    volumes:
+      - ${WEB_DIR}/:/usr/src/app
+      - /usr/src/app/node_modules
+      - /usr/src/app/build
+    restart: always
+    environment:
+      - NODE_ENV=${WEB_ENV}
+    ports:
+      - '${WEB_EXPOSE_PORT}:3000'
