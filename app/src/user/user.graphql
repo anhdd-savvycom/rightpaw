@@ -6,7 +6,18 @@ type Query {
     email: String,
     limit: Int,
     offset: Int
-  ): [User]
+  ): UsersResult
+}
+
+type UsersResult {
+  items: [User],
+  pagination: UsersResultPagination
+}
+
+type UsersResultPagination {
+  perPage: Int,
+  totalPage: Int,
+  currentPage: Int
 }
 
 enum PetExp {

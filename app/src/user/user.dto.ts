@@ -17,3 +17,12 @@ export class UserListResponseItem {
   state: string;
   petExp: PetExp;
 }
+
+export class UserListResponse {
+  items: UserListResponseItem[];
+  pagination: {
+    perPage: number;
+    totalPage: number;
+    currentPage: number;
+  }
+}
